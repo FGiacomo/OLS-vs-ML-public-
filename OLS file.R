@@ -92,7 +92,7 @@ coefs2<-data.frame(name=vec, coefs)
 colnames(coefs2)<-c("name", "value")
 map<-merge(map, coefs2, by.x="SAFE.ID", by.y="name", sort=FALSE, all.x=TRUE)
 
-ggplot(data=map) + geom_sf(aes(fill=value))+   scale_fill_viridis_c(option="plasma") + labs(title="SAFE – Small Area Fixed Effects")
+ggplot(data=map) + geom_sf(aes(fill=value))+   scale_fill_viridis_c(option="plasma") + labs(title="SAFE – Small Area Fixed Effects - OLS")
 
 # running predictions
 prediction<-predict.lm(model.lm, data.test)
@@ -178,7 +178,41 @@ dwtest(model.lm)  # Test di Durbin-Watson --> Un valore di Durbin-Watson vicino 
 bptest(model.lm)  # Test di Breusch-Pagan per l'eteroschedasticità
 # Se il p-value è < 0.05, c’è eteroschedasticità (varianza non costante → possibile problema nel modello).
 
+# -------------- feature selection
+step_model <- step(lm(eq, data = data.train), direction = "both", trace = TRUE)
+summary(step_model)
+
+#No spatial vars:
+eq_no_spatial <- log_price ~ log_age + log_lotsize + log_livearea + Story2more + wall + beds + baths + dGarage
+model_no_spatial <- lm(eq_no_spatial, data.train)
+summary(model_no_spatial)
+prediction_spatial <- predict.lm(model.lm, data.test)
+data.pred_spatial <- data.frame(obs=data.test$log_price, pred=prediction_spatial)
+data.pred_spatial <- na.omit(data.pred_spatial)
+mae_spatial <- mae(data.pred_spatial$obs, data.pred_spatial$pred)
+rmse_spatial <- rmse(data.pred_spatial$obs, data.pred_spatial$pred)
+#spatial vars
+prediction_no_spatial <- predict.lm(model_no_spatial, data.test)
+data.pred_no_spatial <- data.frame(obs=data.test$log_price, pred=prediction_no_spatial)
+data.pred_no_spatial <- na.omit(data.pred_no_spatial)
+# No spatial vars:
+mae_no_spatial <- mae(data.pred_no_spatial$obs, data.pred_no_spatial$pred)
+rmse_no_spatial <- rmse(data.pred_no_spatial$obs, data.pred_no_spatial$pred)
+cat("MAE (NO spatial):", mae_no_spatial, "\n")
+cat("RMSE (NO spatial):", rmse_no_spatial, "\n")
+cat("MAE (Spatial model):", mae_spatial, "\n")
+cat("RMSE (Spatial model):", rmse_spatial, "\n")
 
 
-
+#graph:
+# Residuals spatial vs non-spatial model
+ggplot() +
+  geom_point(data=data.pred_spatial, aes(x=obs, y=obs - pred, color="Spatial Model"), alpha=0.5) +
+  geom_point(data=data.pred_no_spatial, aes(x=obs, y=obs - pred, color="Non-Spatial Model"), alpha=0.5) +
+  labs(title="Distribution of Errors: Spatial Model vs Non-Spatial Model", 
+       x="Observed Values", 
+       y="Residuals") +
+  scale_color_manual(name = "Model", 
+                     values = c("Spatial Model" = "blue", "Non-Spatial Model" = "red")) +
+  theme_minimal()
 
