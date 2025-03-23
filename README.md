@@ -40,9 +40,4 @@ To run the project, you will need to install the following dependencies in **R**
 
 3. Ensure that the **housing data** files are correctly placed under the `#housing data/` folder for the scripts to work.
 
-## Usage
-
-### 1. Data Loading and Preprocessing
-The project loads housing data and integrates spatial data for further analysis.
-
 
