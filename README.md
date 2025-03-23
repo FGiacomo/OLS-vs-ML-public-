@@ -29,7 +29,7 @@ To run the project, you will need to install the following dependencies in **R**
 
 1. Clone this repository:
     ```bash
-    git clone https://github.com/yourusername/your-repo-name.git
+    git clone https://github.com/FGiacomo/OLS-vs-ML-public-.git
     cd OLS-vs-ML-public-
     ```
 
