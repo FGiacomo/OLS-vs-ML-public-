@@ -1,0 +1,26 @@
+========================================================================
+ Lucas County, Ohio Census Tracts
+------------------------------------------------------------------------
+ https://koordinates.com/layer/99834-lucas-county-ohio-census-tracts/
+========================================================================
+From: Lucas County, Ohio
+
+Region: Lucas County
+
+CRS: NAD83 / Ohio North (ftUS)
+
+------------------------------------------------------------------------
+ Processing steps applied by Koordinates
+------------------------------------------------------------------------
+
+- imported to Koordinates in Esri JSON format on 11 Apr 2019
+- 10 invalid geometries fixed at import time 
+    (see https://koordinates.com/layer/99834-lucas-county-ohio-census-tracts/history/)
+- converted by Koordinates to Shapefile on 23 Nov 2024 (reference #3757746)
+
+====================
+No license specified
+====================
+
+No license was specified for this layer. This could mean default rights under copyright law for your legal jurisdiction may apply. Please check with Koordinates if you're unsure of your right to access and use this layer.
+
