@@ -1,7 +1,10 @@
+## --------- FINAL DEPLOYMENT VERSION -------------
+# Giacomo Fantato ---- K-16958 - g.fantato@student.uw.edu.pl
+
 ## ----------- OLS regression Analysis -----------------------
 setwd("C:\\UW\\Second Semester\\Social Networks in Economics Geo\\Project - OLS vs ML")
 wd = getwd()
-install.packages(c("sf", "spdep", "sp", "varycoef", "ggplot2", "haven", "tidyverse"))
+#install.packages(c("sf", "spdep", "sp", "varycoef", "ggplot2", "haven", "tidyverse"))
 library(sf)		# for spatial analysis
 library(spdep)		# for spatial analysis
 library(sp)		# for spatial analysis
@@ -10,20 +13,20 @@ library(ggplot2)		# for (spatial) ggplot
 library(haven)		# to read STATA file
 library(tidyverse)
 # optional packages: to assess the quality of predictions
-install.packages(c("metrica", "dplyr", "purrr", "tidyr"))
+#install.packages(c("metrica", "dplyr", "purrr", "tidyr"))
 library(metrica) # https://adriancorrendo.github.io/metrica/ 
 library(dplyr)
 library(purrr)
 library(tidyr)
-install.packages("oce")
+#install.packages("oce")
 library(oce) 
-install.packages("Metrics")
+#install.packages("Metrics")
 library(Metrics)
 library(lmtest)
-install.packages("nortest") 
+#install.packages("nortest") 
 library(nortest)
 #NB: vareycoeff is deprecated!! --> use install it locally:
-install.packages("C:\\UW\\Second Semester\\Social Networks in Economics Geo\\Project - OLS vs ML\\varycoef_0.3.4.tar.gz", repos = NULL, type="source")
+#install.packages("C:\\UW\\Second Semester\\Social Networks in Economics Geo\\Project - OLS vs ML\\varycoef_0.3.4.tar.gz", repos = NULL, type="source")
 
 # reading Lucas country census track
 # https://koordinates.com/layer/99834-lucas-county-ohio-census-tracts/ 

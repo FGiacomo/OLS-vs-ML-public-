@@ -1,3 +1,6 @@
+## --------- FINAL DEPLOYMENT VERSION -------------
+# Giacomo Fantato ---- K-16958 - g.fantato@student.uw.edu.pl
+
 setwd("C:\\UW\\Second Semester\\Social Networks in Economics Geo\\Project - OLS vs ML")
 library(rpart)      # per il Decision Tree
 library(rpart.plot)  # per visualizzare l'albero

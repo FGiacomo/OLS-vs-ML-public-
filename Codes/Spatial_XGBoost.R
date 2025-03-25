@@ -1,3 +1,5 @@
+## --------- FINAL DEPLOYMENT VERSION -------------
+# Giacomo Fantato ---- K-16958 - g.fantato@student.uw.edu.pl
 setwd("C:\\UW\\Second Semester\\Social Networks in Economics Geo\\Project - OLS vs ML")
 library(sf)
 library(spdep)
@@ -76,15 +78,16 @@ xgb_test <- xgb.DMatrix(data = as.matrix(test_matrix))
   #subsample = 0.7,
   #colsample_bytree = 0.7
 #)
+# ----------- Final training ------------
 params <- list(
-  objective = "reg:squarederror",
-  eval_metric = "rmse",
-  eta = 0.05,  # Riduci il learning rate
-  max_depth = 4,  # Riduci la profondità per evitare overfitting
-  subsample = 0.6,  # Usa meno dati per ciascun albero
-  colsample_bytree = 0.6,  # Usa meno feature per ciascun albero
-  lambda = 1.0,  # Regolarizzazione L2
-  alpha = 0.5  # Regolarizzazione L1
+  objective = "reg:squarederror",  # Use squared error loss for regression
+  eval_metric = "rmse",  # Evaluate the model using Root Mean Squared Error (RMSE)
+  eta = 0.05,  # Reduce the learning rate to make training more gradual
+  max_depth = 4,  # Limit tree depth to prevent overfitting
+  subsample = 0.6,  # Use 60% of the training data for each tree to improve generalization
+  colsample_bytree = 0.6,  # Use 60% of the features for each tree to reduce correlation
+  lambda = 1.0,  # Apply L2 regularization (Ridge) to prevent overfitting
+  alpha = 0.5  # Apply L1 regularization (Lasso) to encourage feature sparsity
 )
 
 data.test.df <- as.data.frame(data.test)  #df conversion
