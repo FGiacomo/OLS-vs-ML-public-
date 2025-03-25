@@ -10,7 +10,6 @@ Key components of the project:
 - **OLS Regression**: Linear regression for predicting house prices.
 - **Decision Tree**: A non-linear regression model to predict house prices.
 - **XGBoost**: A gradient boosting method for accurate and efficient predictions.
-- **Spatial Data Integration**: Incorporates spatial data (shapefiles) for geographically-aware predictions.
 - **Data Folder**: Includes the raw housing and spatial data used for modeling.
 
 ## Repository Structure
